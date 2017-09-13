@@ -1,9 +1,13 @@
 package com.example.suggest_dinner;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String ...args) {
-        System.out.println("Beef Steak");
+        Recipe recipe = new Recipe("Beef Steak");
+        Command command = new Command(Arrays.asList(recipe));
+        System.out.println(command.execute());
     }
 
 }
