@@ -1,0 +1,7 @@
+{
+  "name": "suggest-dinner-test",
+  "version": "0.0.1",
+  "dependencies": {
+    "tape": "^4.8.0"
+  }
+}

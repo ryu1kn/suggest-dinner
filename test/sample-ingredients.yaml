@@ -1,0 +1,8 @@
+ingredients:
+  - name: onion
+    amount: 3
+    expire: 2017-09-12
+  - name: beef
+    amount: 100g
+  - name: potato
+    amount: 5
