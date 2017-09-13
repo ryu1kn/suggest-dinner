@@ -15,3 +15,9 @@ dependencies {
 }
 
 mainClassName = "com.example.suggest_dinner.Main"
+
+run {
+    if (project.hasProperty('appArgs')) {
+        args(appArgs.split(' '))
+    }
+}
