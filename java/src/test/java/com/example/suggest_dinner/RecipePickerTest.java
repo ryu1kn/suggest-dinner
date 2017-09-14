@@ -14,6 +14,7 @@ public class RecipePickerTest {
         Ingredient beef = new Ingredient("Beef");
         Recipe recipe = new Recipe("Beef Steak", Arrays.asList(beef));
         RecipePicker rp = new RecipePicker(Arrays.asList(recipe), Arrays.asList(beef));
+
         assertEquals("Beef Steak", rp.pick().get().getName());
     }
 
@@ -27,6 +28,16 @@ public class RecipePickerTest {
         RecipePicker rp = new RecipePicker(recipes, Arrays.asList(beef));
 
         assertEquals("Beef Steak", rp.pick().get().getName());
+    }
+
+    @Test
+    public void findNoRecipesIfNotEnoughIngredients() {
+        Ingredient beef = new Ingredient("beef");
+        Recipe beefSteak = new Recipe("Beef Steak", Arrays.asList(beef));
+        List<Recipe> recipes = Arrays.asList(beefSteak);
+        RecipePicker rp = new RecipePicker(recipes, Arrays.asList());
+
+        assertEquals(null, rp.pick().orElseGet(null));
     }
 
 }
