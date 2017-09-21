@@ -5,16 +5,16 @@ import java.util.Optional;
 
 public class RecipePicker {
 
-    public final List<Recipe> recipes;
+    public final RecipeBook book;
     public final List<Ingredient> ingredients;
 
-    public RecipePicker(List<Recipe> recipes, List<Ingredient> ingredients) {
-        this.recipes = recipes;
+    public RecipePicker(RecipeBook book, List<Ingredient> ingredients) {
+        this.book = book;
         this.ingredients = ingredients;
     }
 
     public Optional<Recipe> pick() {
-        return recipes.stream()
+        return book.getRecipes().stream()
                 .filter(recipe -> recipe.canCookWith(ingredients))
                 .findFirst();
     }

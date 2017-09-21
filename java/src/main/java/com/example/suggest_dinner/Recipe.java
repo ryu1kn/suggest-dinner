@@ -1,11 +1,14 @@
 package com.example.suggest_dinner;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Recipe {
 
-    private final String name;
-    private final List<Ingredient> ingredients;
+    private String name;
+    private List<Ingredient> ingredients;
+
+    public Recipe() {}
 
     public Recipe(String name, List<Ingredient> ingredients) {
         this.name = name;
@@ -14,6 +17,16 @@ public class Recipe {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients.stream()
+                .map(ingredientName -> new Ingredient(ingredientName))
+                .collect(Collectors.toList());
     }
 
     public boolean canCookWith(List<Ingredient> availableIngredients) {
