@@ -9,5 +9,5 @@ test('gives recipes and ingredients to the command', t => {
 
   const command = `${commandPath} --stock ${__dirname}/sample-stock.yaml --recipes ${__dirname}/sample-recipes.yaml`
   const output = childProcess.execSync(command, {encoding: 'utf8'})
-  t.deepEqual(output, 'Beef Steak\n')
+  t.deepEqual(output, 'Beef steak\n')
 })
