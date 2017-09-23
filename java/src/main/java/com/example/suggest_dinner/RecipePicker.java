@@ -1,21 +1,20 @@
 package com.example.suggest_dinner;
 
-import java.util.List;
 import java.util.Optional;
 
 public class RecipePicker {
 
-    public final RecipeBook book;
-    public final List<Ingredient> ingredients;
+    private final RecipeBook book;
+    private final Stock stock;
 
-    public RecipePicker(RecipeBook book, List<Ingredient> ingredients) {
+    public RecipePicker(RecipeBook book, Stock stock) {
         this.book = book;
-        this.ingredients = ingredients;
+        this.stock= stock;
     }
 
     public Optional<Recipe> pick() {
         return book.getRecipes().stream()
-                .filter(recipe -> recipe.canCookWith(ingredients))
+                .filter(recipe -> recipe.canCookWith(stock.getIngredients()))
                 .findFirst();
     }
 

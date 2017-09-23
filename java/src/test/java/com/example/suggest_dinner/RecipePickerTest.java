@@ -16,7 +16,9 @@ public class RecipePickerTest {
         Recipe recipe = new Recipe("Beef Steak", Collections.singletonList(beef));
         RecipeBook book = new RecipeBook();
         book.setRecipes(Collections.singletonList(recipe));
-        RecipePicker rp = new RecipePicker(book, Collections.singletonList(beef));
+        Stock stock = new Stock();
+        stock.setIngredients(Arrays.asList("Beef"));
+        RecipePicker rp = new RecipePicker(book, stock);
 
         assertEquals("Beef Steak", rp.pick().get().getName());
     }
@@ -29,7 +31,9 @@ public class RecipePickerTest {
         Recipe porkSteak = new Recipe("Pork Steak", Collections.singletonList(pork));
         RecipeBook book = new RecipeBook();
         book.setRecipes(Arrays.asList(porkSteak, beefSteak));
-        RecipePicker rp = new RecipePicker(book, Collections.singletonList(beef));
+        Stock stock = new Stock();
+        stock.setIngredients(Arrays.asList("beef"));
+        RecipePicker rp = new RecipePicker(book, stock);
 
         assertEquals("Beef Steak", rp.pick().get().getName());
     }
@@ -40,7 +44,8 @@ public class RecipePickerTest {
         Recipe beefSteak = new Recipe("Beef Steak", Collections.singletonList(beef));
         RecipeBook book = new RecipeBook();
         book.setRecipes(Collections.singletonList(beefSteak));
-        RecipePicker rp = new RecipePicker(book, Collections.emptyList());
+        Stock stock = new Stock();
+        RecipePicker rp = new RecipePicker(book, stock);
 
         assertEquals(Optional.empty(), rp.pick());
     }

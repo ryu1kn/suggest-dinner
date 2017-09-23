@@ -1,5 +1,6 @@
 package com.example.suggest_dinner;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,7 +9,10 @@ public class Recipe {
     private String name;
     private List<Ingredient> ingredients;
 
-    public Recipe() {}
+    public Recipe() {
+        name = "";
+        ingredients = Collections.emptyList();
+    }
 
     public Recipe(String name, List<Ingredient> ingredients) {
         this.name = name;

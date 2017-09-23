@@ -6,7 +6,6 @@ import org.apache.commons.cli.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Optional;
 
 public class Main {
@@ -18,14 +17,20 @@ public class Main {
                 .required()
                 .hasArg()
                 .build());
+        options.addOption(Option.builder()
+                .longOpt("stock")
+                .required()
+                .hasArg()
+                .build());
         CommandLineParser parser = new DefaultParser();
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
             CommandLine cmdArgs = parser.parse(options, args);
             File recipeFile = new File(cmdArgs.getOptionValue("recipes"));
-            ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
             RecipeBook book = mapper.readValue(recipeFile, RecipeBook.class);
-            Ingredient beef = new Ingredient("beef");
-            RecipePicker picker = new RecipePicker(book, Arrays.asList(beef));
+            File stockFile = new File(cmdArgs.getOptionValue("stock"));
+            Stock stock = mapper.readValue(stockFile, Stock.class);
+            RecipePicker picker = new RecipePicker(book, stock);
             Optional<Recipe> found = picker.pick();
             String recipeName = found.isPresent() ? found.get().getName() : "";
             System.out.println(recipeName);
