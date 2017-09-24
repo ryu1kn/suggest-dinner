@@ -10,15 +10,19 @@ import java.util.Optional;
 
 public class Main {
 
+    private static final String COMMAND_NAME = "suggest-dinner";
+    private static final String OPT_NAME_RECIPE = "recipes";
+    private static final String OPT_NAME_STOCK = "stock";
+
     public static void main(String ...args) throws IOException {
         Options options = new Options();
         options.addOption(Option.builder()
-                .longOpt("recipes")
+                .longOpt(OPT_NAME_RECIPE)
                 .required()
                 .hasArg()
                 .build());
         options.addOption(Option.builder()
-                .longOpt("stock")
+                .longOpt(OPT_NAME_STOCK)
                 .required()
                 .hasArg()
                 .build());
@@ -26,9 +30,9 @@ public class Main {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
             CommandLine cmdArgs = parser.parse(options, args);
-            File recipeFile = new File(cmdArgs.getOptionValue("recipes"));
+            File recipeFile = new File(cmdArgs.getOptionValue(OPT_NAME_RECIPE));
             RecipeBook book = mapper.readValue(recipeFile, RecipeBook.class);
-            File stockFile = new File(cmdArgs.getOptionValue("stock"));
+            File stockFile = new File(cmdArgs.getOptionValue(OPT_NAME_STOCK));
             Stock stock = mapper.readValue(stockFile, Stock.class);
             RecipePicker picker = new RecipePicker(book, stock);
             Optional<Recipe> found = picker.pick();
@@ -36,7 +40,7 @@ public class Main {
             System.out.println(recipeName);
         } catch (ParseException e) {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("suggest-dinner", options);
+            formatter.printHelp(COMMAND_NAME, options);
         }
     }
 
