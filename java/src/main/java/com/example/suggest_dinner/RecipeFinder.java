@@ -1,6 +1,7 @@
 package com.example.suggest_dinner;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RecipeFinder {
 
@@ -12,10 +13,10 @@ public class RecipeFinder {
         this.stock = stock;
     }
 
-    public Optional<Recipe> find() {
+    public List<Recipe> find() {
         return book.getRecipes().stream()
                 .filter(recipe -> recipe.canCookWith(stock.getIngredients()))
-                .findFirst();
+                .collect(Collectors.toList());
     }
 
 }

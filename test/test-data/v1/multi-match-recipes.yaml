@@ -1,0 +1,13 @@
+version: 1
+recipes:
+  - name: pot-au-feu
+    ingredients:
+      - onion
+      - pork
+  - name: Beef steak
+    ingredients:
+      - beef
+  - name: Ginger pork
+    ingredients:
+      - pork
+      - ginger

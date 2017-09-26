@@ -6,7 +6,6 @@ import org.apache.commons.cli.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Optional;
 
 public class Main {
 
@@ -35,9 +34,9 @@ public class Main {
             File stockFile = new File(cmdArgs.getOptionValue(OPT_NAME_STOCK));
             Stock stock = mapper.readValue(stockFile, Stock.class);
             RecipeFinder finder = new RecipeFinder(book, stock);
-            Optional<Recipe> found = finder.find();
-            String recipeName = found.isPresent() ? found.get().getName() : "";
-            System.out.println(recipeName);
+            finder.find().stream()
+                    .map(recipe -> recipe.getName())
+                    .forEach(System.out::println);
         } catch (ParseException e) {
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp(COMMAND_NAME, options);
