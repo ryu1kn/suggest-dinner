@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 
-public class RecipePickerTest {
+public class RecipeFinderTest {
 
     @Test
     public void pickBeefSteakRecipe() {
@@ -18,9 +18,9 @@ public class RecipePickerTest {
         book.setRecipes(Collections.singletonList(recipe));
         Stock stock = new Stock();
         stock.setIngredients(Arrays.asList("Beef"));
-        RecipePicker rp = new RecipePicker(book, stock);
+        RecipeFinder finder = new RecipeFinder(book, stock);
 
-        assertEquals("Beef Steak", rp.pick().get().getName());
+        assertEquals("Beef Steak", finder.find().get().getName());
     }
 
     @Test
@@ -33,9 +33,9 @@ public class RecipePickerTest {
         book.setRecipes(Arrays.asList(porkSteak, beefSteak));
         Stock stock = new Stock();
         stock.setIngredients(Arrays.asList("beef"));
-        RecipePicker rp = new RecipePicker(book, stock);
+        RecipeFinder finder = new RecipeFinder(book, stock);
 
-        assertEquals("Beef Steak", rp.pick().get().getName());
+        assertEquals("Beef Steak", finder.find().get().getName());
     }
 
     @Test
@@ -45,9 +45,9 @@ public class RecipePickerTest {
         RecipeBook book = new RecipeBook();
         book.setRecipes(Collections.singletonList(beefSteak));
         Stock stock = new Stock();
-        RecipePicker rp = new RecipePicker(book, stock);
+        RecipeFinder finder = new RecipeFinder(book, stock);
 
-        assertEquals(Optional.empty(), rp.pick());
+        assertEquals(Optional.empty(), finder.find());
     }
 
 }

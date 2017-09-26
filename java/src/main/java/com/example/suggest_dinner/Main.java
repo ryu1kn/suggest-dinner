@@ -34,8 +34,8 @@ public class Main {
             RecipeBook book = mapper.readValue(recipeFile, RecipeBook.class);
             File stockFile = new File(cmdArgs.getOptionValue(OPT_NAME_STOCK));
             Stock stock = mapper.readValue(stockFile, Stock.class);
-            RecipePicker picker = new RecipePicker(book, stock);
-            Optional<Recipe> found = picker.pick();
+            RecipeFinder finder = new RecipeFinder(book, stock);
+            Optional<Recipe> found = finder.find();
             String recipeName = found.isPresent() ? found.get().getName() : "";
             System.out.println(recipeName);
         } catch (ParseException e) {
