@@ -14,9 +14,7 @@ public class Main {
     private static final String OPT_NAME_STOCK = "stock";
 
     public static void main(String... args) throws IOException {
-        Options options = new Options();
-        options.addOption(Option.builder().longOpt(OPT_NAME_RECIPE).required().hasArg().build());
-        options.addOption(Option.builder().longOpt(OPT_NAME_STOCK).required().hasArg().build());
+        Options options = getCommandOptions();
         CommandLineParser parser = new DefaultParser();
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
@@ -35,6 +33,13 @@ public class Main {
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp(COMMAND_NAME, options);
         }
+    }
+
+    private static Options getCommandOptions() {
+        Options options = new Options();
+        options.addOption(Option.builder().longOpt(OPT_NAME_RECIPE).required().hasArg().build());
+        options.addOption(Option.builder().longOpt(OPT_NAME_STOCK).required().hasArg().build());
+        return options;
     }
 
 }
