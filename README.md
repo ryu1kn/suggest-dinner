@@ -37,6 +37,7 @@ recipes:
 
 * Return not just one but all recipes that can be cooked
 * Amount for ingredients (both stock and recipe)
+* How many serves
 * Ingredients can expire
 * Each recipe has different difficulty
 * Each recipe has different time to cook
