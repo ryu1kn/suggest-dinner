@@ -18,6 +18,10 @@ dependencies {
                 'org.mockito:mockito-core:2.10.0'
 }
 
+compileJava {
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
 mainClassName = "com.example.suggest_dinner.Main"
 
 run {
