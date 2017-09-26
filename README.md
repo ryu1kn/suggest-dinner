@@ -39,7 +39,8 @@ recipes:
 * Ingredients can expire
 * Each recipe has different difficulty
 * Each recipe has different time to cook
-* Read recipes from DB
+* Read recipes and/or stock from different file formats (JSON, CSV, ...)
+* Read recipes and/or stock from DB
 * Make it a web service (provide API)
 * Course menu: Entre, main, ...
 * Food genre (Japanese, Thai, French, ...)
