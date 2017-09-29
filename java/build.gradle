@@ -13,7 +13,8 @@ repositories {
 dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.9.1',
             'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.1',
-            'commons-cli:commons-cli:1.4'
+            'commons-cli:commons-cli:1.4',
+            'com.google.collections:google-collections:1.0'
     testCompile 'junit:junit:4.12',
                 'org.mockito:mockito-core:2.10.0'
 }

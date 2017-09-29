@@ -1,22 +1,22 @@
 package com.example.suggest_dinner;
 
 import java.util.Collections;
-import java.util.List;
+import java.util.Map;
 
 public class Stock {
 
     private int version = -1;
-    private List<String> ingredients = Collections.emptyList();
+    private Map<String, Integer> ingredients = Collections.emptyMap();
 
     public void setVersion(int version) {
         this.version = version;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(Map<String, Integer> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public List<String> getIngredients() {
+    public Map<String, Integer> getIngredients() {
         return ingredients;
     }
 

@@ -1,12 +1,12 @@
 package com.example.suggest_dinner;
 
 import java.util.Collections;
-import java.util.List;
+import java.util.Map;
 
 public class Recipe {
 
     private String name = "";
-    private List<String> ingredients = Collections.emptyList();
+    private Map<String, Integer> ingredients = Collections.emptyMap();
 
     public String getName() {
         return name;
@@ -16,12 +16,13 @@ public class Recipe {
         this.name = name;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(Map<String, Integer> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public boolean canCookWith(List<String> availableIngredients) {
-        return ingredients.stream().allMatch(availableIngredients::contains);
+    public boolean canCookWith(Map<String, Integer> availableIngredients) {
+        return ingredients.entrySet().stream()
+                .allMatch(ingredient -> availableIngredients.getOrDefault(ingredient.getKey(), 0) >= ingredient.getValue());
     }
 
 }
