@@ -1,0 +1,12 @@
+version: 2
+recipes:
+  - name: Pot-au-feu
+    ingredients:
+      onion: 300
+      pork: 300
+  - name: Beef steak
+    ingredients:
+      beef: 400
+  - name: Pork steak
+    ingredients:
+      pork: 400
