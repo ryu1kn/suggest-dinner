@@ -17,5 +17,5 @@ test('finds all recipes that needs can be cooked', t => {
 
   const command = `${commandPath} --stock ${__dirname}/data/multi-match--stock.yaml --recipes ${__dirname}/data/multi-match--recipes.yaml`
   const output = childProcess.execSync(command, {encoding: 'utf8'})
-  t.deepEqual(output, 'pot-au-feu\nBeef steak\n')
+  t.deepEqual(output, 'Pot-au-feu\nBeef steak\n')
 })

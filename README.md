@@ -23,7 +23,7 @@ ingredients:
 ```yaml
 version: 1
 recipes:
-  - name: pot-au-feu
+  - name: Pot-au-feu
     ingredients:
       - onion
       - leek
@@ -48,3 +48,4 @@ recipes:
 * Food genre (Japanese, Thai, French, ...)
 * Ingredients at hand, ingredients that can buy (with cost)
 * Data migration (schema change)
+* Provide a command if certain recipe can be cooked, if not, tell why

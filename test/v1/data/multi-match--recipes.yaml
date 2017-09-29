@@ -1,6 +1,6 @@
 version: 1
 recipes:
-  - name: pot-au-feu
+  - name: Pot-au-feu
     ingredients:
       - onion
       - pork
