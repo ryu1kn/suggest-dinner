@@ -1,6 +1,9 @@
 
 # Suggest Dinner
 
+Trying to make this as a not too small but not big coding exercise
+that I can solve with many languages and experiment things.
+
 From the ingredients you have, suggest tonight's dinner
 
 ```sh
